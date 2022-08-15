@@ -1,17 +1,17 @@
 *{
     padding: 0;
     margin: 0;
-    color:white;
+    
     box-sizing: border-box;
 
 }
 body{
-    background-image: url('../image/dark-blue-product-background.jpg');
+    background-image: url('../image/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner.jpg');
     background-size: cover;
     background-position: center;
 }
 .shadow{
-    box-shadow: 0 1px 2px 1px rgb(234, 234, 234), 0 2px 3px 1px rgb(232, 230, 230);
+    box-shadow: 0 0 3px 1px rgba(99, 99, 99,.4), 0 2px 5px 2px rgba(99, 99, 99,0.4);
     border-radius: 4px;
 }
 .header{
@@ -20,7 +20,7 @@ body{
     justify-content: space-between;
     margin: 10px;
     padding: 10px 20px;
-    background-color:rgba(28, 22, 22, 0.4);
+    background-color:rgba(240, 240, 240, 0.4);
     backdrop-filter:blur(6px);
 }
 .section{
@@ -35,12 +35,12 @@ body{
     padding: 10px 20px;
     position: sticky;
     top: 100px;
-    background-color:rgba(28, 22, 22, 0.4);
+    background-color:rgba(240, 240, 240, 0.4);
     backdrop-filter:blur(6px);
     color:red ;
 }
 .content{
-    background-color:rgba(28, 22, 22, 0.4);
+    background-color:rgba(240, 240, 240, 0.4);
     backdrop-filter:blur(6px);
     margin: 10px;
     padding: 10px 20px;
