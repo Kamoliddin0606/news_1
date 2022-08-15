@@ -12,16 +12,18 @@ body{
 }
 .shadow{
     box-shadow: 0 0 3px 1px rgba(99, 99, 99,.4), 0 2px 5px 2px rgba(99, 99, 99,0.4);
-    border-radius: 4px;
+   
 }
 .header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 10px;
+    margin: 0 10px;
     padding: 10px 20px;
-    background-color:rgba(240, 240, 240, 0.4);
+    border-bottom:1px solid #000;
+    background-color:rgba(84, 84, 84, 0.4);
     backdrop-filter:blur(6px);
+    color: white;
 }
 .section{
     width: 100%;
@@ -31,16 +33,16 @@ body{
 }
 .nav{
     width: 300px;
-    margin: 10px;
+    margin: 0 10px;
     padding: 10px 20px;
     position: sticky;
     top: 100px;
-    background-color:rgba(240, 240, 240, 0.4);
+    background-color:rgba(84, 84, 84, 0.4);
     backdrop-filter:blur(6px);
-    color:red ;
+    color:rgb(255, 255, 255) ;
 }
 .content{
-    background-color:rgba(240, 240, 240, 0.4);
+    background-color:rgba(84, 84, 84, 0.4);
     backdrop-filter:blur(6px);
     margin: 10px;
     padding: 10px 20px;
@@ -48,23 +50,26 @@ body{
 }
 a{
     text-decoration: none;
-    color:red !important;
+    color:rgb(255, 255, 255) !important;
 
 }
 .nav_list{
     margin: 10px;
     position: absolute;
     z-index: 5;
+
  
 }
 li{
     margin-top: 10px;
     list-style-type: none;
     display: flex;
+    
 
 }
 li p{
     margin-left: 10px;
+   
 }
 
 .post{
@@ -96,7 +101,7 @@ li p{
     flex-direction: row;
     justify-content: space-around;
     margin-top: 20px;
-    color: rgb(174, 173, 173);
+    color: rgb(255, 255, 255);
 }
 hr{
     margin-bottom: 10px;
