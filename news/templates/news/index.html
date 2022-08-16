@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +8,7 @@
     <title>Index</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
    <div class="header ">
@@ -22,11 +22,10 @@
    <div class="section">
     <div class="nav ">
         <ul class="nav_list">
-            <a href=""><li><i class="fa-solid fa-battery-full"></i><p>ALL</p> </li></a>
-            <a href=""><li><i class="fa-solid fa-volleyball"></i><p>Sport</p></li></a>
-            <a href=""><li><i class="fa-solid fa-earth-americas"></i><p>World</p></li></a>
-            <a href=""><li><i class="fa-solid fa-heart-pulse"></i><p>LifeStyle</p></li></a>
-            <a href=""><li><i class="fa-solid fa-laptop"></i><p>Hi-Tech</p></li></a>
+            {% for category in categories %}
+                <a href=""><li><i class="fa-solid {{category.icon}}"></i><p>{{category.title}}</p> </li></a>
+            {% endfor %}
+
         </ul>
     </div>
     <div class="content ">

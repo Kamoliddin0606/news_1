@@ -11,8 +11,9 @@ class Category(models.Model):
     title = models.CharField(max_length=120)
     body = models.TextField()
     image = models.ImageField(upload_to='category/')
-    slug = models.SlugField(unique=True)
-    icon = models.CharField(max_length=250)
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    icon = models.CharField(max_length=250, default='fa-battery-full')
+  
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Category, self).save(*args, **kwargs)
@@ -27,7 +28,7 @@ class News(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     Updated_date = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
 
