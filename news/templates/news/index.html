@@ -1,67 +1,46 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% extends 'base.html' %}
+{% block title %}
+index
+{% endblock title %}
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-   <div class="header ">
-        <div class="header_left">
-            <p>Logo</p>
-        </div>
-        <div class="header_right">
-            <p>Account</p>
-        </div>
-   </div>
-   <div class="section">
-    <div class="nav ">
-        <ul class="nav_list">
-            {% for category in categories %}
-                <a href=""><li><i class="fa-solid {{category.icon}}"></i><p>{{category.title}}</p> </li></a>
-            {% endfor %}
+{% block content %}
 
-        </ul>
+{% for post in news %}
+        
+<div class="post">
+    <div class="image_context">
+        <a href="{% url 'detail_post' post.slug %}"> <img src="{{post.get_image.image.url}}" alt="{{post.title}}"></a>
     </div>
-    <div class="content ">
-        <div class="post">
-            <div class="image_context">
-                <img src="../../static/image/image_nes.jpeg" alt="Text">
-            </div>
-            <div class="post_body">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, quo!</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum sequi velit ex, illo quas recusandae numquam aspernatur praesentium dolor.</p>
-                <div class='bottom_post'>
-                    <p>likes</p>
-                    <p>views</p>
-                    <p>Create date</p>
-                    <p>Author</p>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="post">
-            <div class="image_context">
-                <img src="../../static/image/image_nes.jpeg" alt="Text">
-            </div>
-            <div class="post_body">
-                <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, quo!</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum sequi velit ex, illo quas recusandae numquam aspernatur praesentium dolor.</p>
-                <div class='bottom_post'>
-                    <p>likes</p>
-                    <p>views</p>
-                    <p>Create date</p>
-                    <p>Author</p>
-                </div>
-            </div>
+    <div class="post_body">
+        <a href="{% url 'detail_post' post.slug %}"><h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt, quo!</h3></a>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum sequi velit ex, illo quas recusandae numquam aspernatur praesentium dolor.</p>
+        <div class='bottom_post'>
+            <p>likes</p>
+            <p>views</p>
+            <p>Create date</p>
+            <p>Author</p>
         </div>
     </div>
-   </div>
+</div>
+<hr>
+{% endfor %}
 
-</body>
-</html>
+<div class="pagination">
+    <span class="step-links">
+        {% if news.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ news.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ news.number }} of {{ news.paginator.num_pages }}.
+        </span>
+
+        {% if news.has_next %}
+            <a href="?page={{ news.next_page_number }}">next</a>
+            <a href="?page={{ news.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock content %}
+

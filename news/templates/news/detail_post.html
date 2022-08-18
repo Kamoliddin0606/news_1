@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}
+{{post.title}}
+{% endblock title %}
+{% block content %}
+<div class="post">
+
+    <div class="post_body">
+        <div class="image_context">
+            <img src="{{post.get_image.image.url}}" alt="{{post.title}}">
+        </div>
+        <h3>{{post.title}}</h3>
+        <p>{{post.body}}</p>
+        <div class='bottom_post'>
+            {% if liked_element.like is False  %}
+             <a href="{% url 'detail_post' post.slug %}?like=like"><i class="fa-solid fa-heart-crack" {% if liked_element %} {% if liked_element.like %}style='color:red;' {% else %} style='color:#000;' {% endif %}{% endif %}></i></a>
+            {% elif liked_element.like %}
+           
+                     <a href="{% url 'detail_post' post.slug %}?like=like"><i class="fa-solid fa-heart" {% if liked_element %} {% if liked_element.like %}style='color:red;' {% else %} style='color:#000;' {% endif %}{% endif %}></i></a>
+          
+             
+            {% else %}
+            
+                      <a href="{% url 'detail_post' post.slug %}?like=like"><i class="fa-solid fa-heart" {% if liked_element %} {% if liked_element.like %}style='color:red;' {% else %} style='color:#000;' {% endif %}{% endif %}></i></a>
+          
+            {% endif %}
+            <p>likes <span>{{post.likes}}</span></p>
+            <p>views</p>
+            <p>Create date:  <span style="font-size: 24px;">{{post.created_date}}</span></p>
+            <p>Author: <span style="font-size: 24px;">{{post.author}}</span></p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+

@@ -1,5 +1,7 @@
+from email.mime import image
 from enum import unique
 from operator import mod
+from tkinter import image_names
 from turtle import title
 from venv import create
 from django.db import models
@@ -31,9 +33,15 @@ class News(models.Model):
     slug = models.SlugField(unique=True, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
+   
+    def get_image(self):
+        images = Images.objects.filter(news = self)
+        if images.count() >0:
+            images = images[:1]
+        
 
-
-
+            return list(images)[0]
+        
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(News, self).save(*args, **kwargs)
